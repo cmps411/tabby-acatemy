@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./App.css";
-import axios from "axios";
+import Axios from "axios";
 
 function App() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [data, setData] = useState(null);
   const register = () => {
-    axios({
+    Axios({
       method: "POST",
       data: {
         username: registerUsername,
@@ -18,10 +19,9 @@ function App() {
       url: "http://localhost:5000/register",
     }).then((res) => console.log(res));
   };
-
   const login = () => {
-    axios({
-      method: "post",
+    Axios({
+      method: "POST",
       data: {
         username: loginUsername,
         password: loginPassword,
@@ -31,11 +31,14 @@ function App() {
     }).then((res) => console.log(res));
   };
   const getUser = () => {
-    axios({
-      method: "get",
+    Axios({
+      method: "GET",
       withCredentials: true,
-      url: "http://localhost:5000/getUser",
-    }).then((res) => console.log(res));
+      url: "http://localhost:5000/user",
+    }).then((res) => {
+      setData(res.data);
+      console.log(res.data);
+    });
   };
   return (
     <div className="App">
@@ -68,6 +71,7 @@ function App() {
       <div>
         <h1>Get User</h1>
         <button onClick={getUser}>Submit</button>
+        {data ? <h1>Welcome Back {data.username}</h1> : "login"}
       </div>
     </div>
   );
