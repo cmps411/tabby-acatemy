@@ -9,6 +9,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const User = require("./models/user.model");
 
+require("./passport/PassportGoogleConfig");
 require("dotenv").config();
 
 const app = express();
@@ -34,21 +35,20 @@ app.use(
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-require('./passportConfig')(passport);
-
-
+require("./passport/passportConfig")(passport);
 
 // Routes
+
 app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err,user,info) => {
+  passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) res.send("No user exists!");
     else {
-        req.logIn(user, err => {
-          if (err) throw err;
-          res.send("Successfully Authenticated");
-          console.log(req.user);
-        })
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send("Successfully Authenticated");
+        console.log(req.user);
+      });
     }
   })(req, res, next);
 });
@@ -63,6 +63,7 @@ app.post("/register", (req, res) => {
       const newUser = new User({
         username: req.body.username,
         password: hashedPassword,
+        email: req.body.email,
       });
       await newUser.save();
       res.send("User Created");

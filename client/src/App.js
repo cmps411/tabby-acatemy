@@ -5,6 +5,7 @@ import Axios from "axios";
 function App() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [data, setData] = useState(null);
@@ -14,6 +15,7 @@ function App() {
       data: {
         username: registerUsername,
         password: registerPassword,
+        email: registerEmail,
       },
       withCredentials: true,
       url: "http://localhost:5000/register",
@@ -40,6 +42,22 @@ function App() {
       console.log(res.data);
     });
   };
+  const resetPassword = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: registerUsername,
+        password: registerPassword,
+        email: registerEmail,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/resetpassword",
+    }).then((res) => {
+      setData(res.data);
+      console.log(res);
+    });
+  };
+
   return (
     <div className="App">
       <div>
@@ -47,6 +65,10 @@ function App() {
         <input
           placeholder="username"
           onChange={(e) => setRegisterUsername(e.target.value)}
+        />
+        <input
+          placeholder="email"
+          onChange={(e) => setRegisterEmail(e.target.value)}
         />
         <input
           placeholder="password"
@@ -71,7 +93,17 @@ function App() {
       <div>
         <h1>Get User</h1>
         <button onClick={getUser}>Submit</button>
-        {data ? <h1>Welcome Back {data.username}</h1> : "login"}
+        {data ? <h1>Welcome Back {data.username}</h1> : null}
+      </div>
+
+      <div>
+        <h1>Forgot Password?</h1>
+        <input
+          placeholder="email"
+          onChange={(e) => setLoginPassword(e.target.value)}
+        />
+        <button onClick={resetPassword}>Submit</button>
+        {data ? <h1>{data.confirmation}</h1> : null}
       </div>
     </div>
   );
