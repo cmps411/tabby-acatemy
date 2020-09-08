@@ -1,16 +1,18 @@
-const express = require("express");
 const mongoose = require("mongoose");
+const express = require("express");
+const cors = require("cors");
 const passport = require("passport");
-const passportLocal = require("passport-local");
+const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
-const cors = require("cors");
+const bodyParser = require("body-parser");
+const User = require("./models/user.model");
 
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 app.use(
   cors({
     origin: "http://localhost:3000", //react app location
@@ -18,8 +20,8 @@ app.use(
   })
 );
 //allows us to parse json!
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
@@ -36,7 +38,20 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-  console.log(req.body);
+  User.findOne({ username: req.body.username }, async (err, doc) => {
+    if (err) throw err;
+    if (doc) res.send("User Already Exists");
+    if (!doc) {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+      const newUser = new User({
+        username: req.body.username,
+        password: hashedPassword,
+      });
+      await newUser.save();
+      res.send("User Created");
+    }
+  });
 });
 
 app.get("/user", (req, res) => {

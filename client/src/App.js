@@ -9,18 +9,34 @@ function App() {
   const [loginPassword, setLoginPassword] = useState("");
   const register = () => {
     axios({
-      method: "post",
+      method: "POST",
       data: {
-        registerUsername,
-        registerPassword,
+        username: registerUsername,
+        password: registerPassword,
       },
       withCredentials: true,
       url: "http://localhost:5000/register",
-    })
-    .then(res => console.log(res));
+    }).then((res) => console.log(res));
   };
-  const login = () => {};
-  const getUser = () => {};
+
+  const login = () => {
+    axios({
+      method: "post",
+      data: {
+        username: loginUsername,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/login",
+    }).then((res) => console.log(res));
+  };
+  const getUser = () => {
+    axios({
+      method: "get",
+      withCredentials: true,
+      url: "http://localhost:5000/getUser",
+    }).then((res) => console.log(res));
+  };
   return (
     <div className="App">
       <div>
