@@ -8,6 +8,7 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const User = require("./models/user.model");
+require("./passport/passportConfig")(passport);
 
 require("./passport/PassportGoogleConfig");
 require("dotenv").config();
@@ -35,45 +36,17 @@ app.use(
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-require("./passport/passportConfig")(passport);
+
 
 // Routes
 
-app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
-    if (!user) res.send("No user exists!");
-    else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        res.send("Successfully Authenticated");
-        console.log(req.user);
-      });
-    }
-  })(req, res, next);
-});
+const loginRouter = require("./routes/login");
+const registerRouter = require('./routes/register');
+const userRouter = require('./routes/user');
 
-app.post("/register", (req, res) => {
-  User.findOne({ username: req.body.username }, async (err, doc) => {
-    if (err) throw err;
-    if (doc) res.send("User Already Exists");
-    if (!doc) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-      const newUser = new User({
-        username: req.body.username,
-        password: hashedPassword,
-        email: req.body.email,
-      });
-      await newUser.save();
-      res.send("User Created");
-    }
-  });
-});
-
-app.get("/user", (req, res) => {
-  res.send(req.user);
-});
+app.use("/login", loginRouter);
+app.use("/register", registerRouter);
+app.use("/user", userRouter);
 
 //from .env file
 const uri = process.env.ATLAS_URI;
