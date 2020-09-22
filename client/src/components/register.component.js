@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Col } from "react-bootstrap";
 
 function HookRegister() {
   const [registerUsername, setRegisterUsername] = useState("");
@@ -23,38 +23,38 @@ function HookRegister() {
   return (
     <div>
       <h1>Register</h1>
-      <Form>
-      <Form.Group controlId="formBasicEmail">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            onChange={(e) => setRegisterUsername(e.target.value)}
-            type="email"
-            placeholder="Enter Username"
-          />
-        </Form.Group>
-      
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            onChange={(e) => setRegisterEmail(e.target.value)}
-            type="email"
-            placeholder="Enter email"
-          />
-        </Form.Group>
+      <Form >
+        <Form.Row className="justify-content-md-center">
+          <Col xs="auto">
+            <Form.Control
+              onChange={(e) => setRegisterUsername(e.target.value)}
+              type="email"
+              placeholder="Enter Username"
+            />
+          </Col>
+          <Col xs="auto">
+            <Form.Control
+              onChange={(e) => setRegisterEmail(e.target.value)}
+              type="email"
+              placeholder="Enter email"
+            />
+          </Col>
 
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            onChange={(e) => setRegisterPassword(e.target.value)}
-            type="password"
-            placeholder="Enter password"
-          />
-        </Form.Group>
-
-        <Button variant='outline-info' onClick={register}>Register</Button>
+          <Col xs="auto">
+            <Form.Control
+              onChange={(e) => setRegisterPassword(e.target.value)}
+              type="password"
+              placeholder="Enter password"
+            />
+          </Col>
+          
+          <Button variant="outline-info" onClick={register}>
+          Register
+        </Button>
+        </Form.Row>
+        
+        
       </Form>
-
-
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Col } from "react-bootstrap";
 
 function HookLogin() {
   const [loginUsername, setLoginUsername] = useState("");
@@ -22,26 +22,27 @@ function HookLogin() {
   return (
     <div>
       <h1>Login</h1>
-      <Form>
-      <Form.Group controlId="formBasicEmail">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            onChange={(e) => setLoginUsername(e.target.value)}
-            type="email"
-            placeholder="Enter Username"
-          />
-        </Form.Group>
+      <Form className="m-0">
+        <Form.Row className="justify-content-md-center m-4">
+          <Col xs="auto">
+            <Form.Control
+              onChange={(e) => setLoginUsername(e.target.value)}
+              type="email"
+              placeholder="Enter Username"
+            />
+          </Col>
 
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            onChange={(e) => setLoginPassword(e.target.value)}
-            type="password"
-            placeholder="Enter password"
-          />
-        </Form.Group>
-
-        <Button variant='outline-info' onClick={login}>login</Button>
+          <Col xs="auto">
+            <Form.Control
+              onChange={(e) => setLoginPassword(e.target.value)}
+              type="password"
+              placeholder="Enter password"
+            />
+          </Col>
+          <Button variant="outline-info" onClick={login}>
+            login
+          </Button>
+        </Form.Row>
       </Form>
     </div>
   );
