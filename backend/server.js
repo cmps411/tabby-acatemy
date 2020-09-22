@@ -13,12 +13,11 @@ const GridFsStorage = require("multer-gridfs-storage");
 const Grid = require("gridfs-stream");
 const crypto = require("crypto");
 const path = require("path");
-const dotenv = require('dotenv')
+const dotenv = require("dotenv");
 require("./passport/passportConfig")(passport);
 require("./passport/PassportGoogleConfig")(passport);
 
-
-dotenv.config({ path: './config.env'})
+dotenv.config({ path: "./config.env" });
 const app = express();
 const port = process.env.PORT;
 
@@ -51,13 +50,13 @@ const registerRouter = require("./routes/register");
 const userRouter = require("./routes/user");
 
 app.get("/", function (req, res) {
-  res.redirect('http://localhost:3000')
+
 });
 
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/user", userRouter);
-app.use('/auth', require('./routes/Gauth'))
+app.use("/auth", require("./routes/Gauth"));
 
 //from .env file
 const uri = process.env.ATLAS_URI;

@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Axios from "axios";
-
-
+import { Button, Form } from "react-bootstrap";
 
 function HookRegister() {
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
 
-    const [registerUsername, setRegisterUsername] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-    const [registerEmail, setRegisterEmail] = useState("");
-    
-    const register = () => {
+  const register = () => {
     Axios({
       method: "POST",
       data: {
@@ -20,26 +18,45 @@ function HookRegister() {
       withCredentials: true,
       url: "http://localhost:5000/register",
     }).then((res) => console.log(res));
-    }
+  };
 
   return (
-      <div>
-        <h1>Register</h1>
-        <input
-          placeholder="username"
-          onChange={(e) => setRegisterUsername(e.target.value)}
-        />
-        <input
-          placeholder="email"
-          onChange={(e) => setRegisterEmail(e.target.value)}
-        />
-        <input
-          placeholder="password"
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        <button onClick={register}>Submit</button>
-      </div>
-)
-};
-  
-export default HookRegister
+    <div>
+      <h1>Register</h1>
+      <Form>
+      <Form.Group controlId="formBasicEmail">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            onChange={(e) => setRegisterUsername(e.target.value)}
+            type="email"
+            placeholder="Enter Username"
+          />
+        </Form.Group>
+      
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            onChange={(e) => setRegisterEmail(e.target.value)}
+            type="email"
+            placeholder="Enter email"
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            onChange={(e) => setRegisterPassword(e.target.value)}
+            type="password"
+            placeholder="Enter password"
+          />
+        </Form.Group>
+
+        <Button variant='outline-info' onClick={register}>Register</Button>
+      </Form>
+
+
+    </div>
+  );
+}
+
+export default HookRegister;

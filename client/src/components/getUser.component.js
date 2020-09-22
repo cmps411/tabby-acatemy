@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import { Button } from "react-bootstrap";
 
 function HookGetUser() {
     const [data, setData] = useState(null);
@@ -19,7 +20,7 @@ function HookGetUser() {
   return (
     <div>
     <h1>Get User</h1>
-    <button onClick={getUser}>Submit</button>
+    <Button variant='outline-info' onClick={getUser}>Submit</Button>
     {data ? <h1>Welcome Back {data.username}</h1> : null}
   </div>
   );

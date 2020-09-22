@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, Form } from "react-bootstrap";
 
 function HookLogin() {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
-  const logout = () => {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:5000/auth/logout",
-    }).then((res) => console.log(res)).catch((err) => console.log(err));
-  };
 
   const login = () => {
     Axios({
@@ -28,17 +22,27 @@ function HookLogin() {
   return (
     <div>
       <h1>Login</h1>
-      <input
-        placeholder="username"
-        onChange={(e) => setLoginUsername(e.target.value)}
-      />
-      <input
-        placeholder="password"
-        onChange={(e) => setLoginPassword(e.target.value)}
-      />
-      <button onClick={login}>login</button>
+      <Form>
+      <Form.Group controlId="formBasicEmail">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            onChange={(e) => setLoginUsername(e.target.value)}
+            type="email"
+            placeholder="Enter Username"
+          />
+        </Form.Group>
 
-      <button onClick={logout}>logout</button>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            onChange={(e) => setLoginPassword(e.target.value)}
+            type="password"
+            placeholder="Enter password"
+          />
+        </Form.Group>
+
+        <Button variant='outline-info' onClick={login}>login</Button>
+      </Form>
     </div>
   );
 }
