@@ -8,8 +8,13 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const User = require("./models/user.model");
-require("./passport/passportConfig")(passport);
+const multer = require("multer");
+const GridFsStorage = require("multer-gridfs-storage");
+const Grid = require("gridfs-stream");
+const crypto = require("crypto");
+const path = require("path");
 
+require("./passport/passportConfig")(passport);
 require("./passport/PassportGoogleConfig");
 require("dotenv").config();
 
@@ -37,12 +42,11 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Routes
 
 const loginRouter = require("./routes/login");
-const registerRouter = require('./routes/register');
-const userRouter = require('./routes/user');
+const registerRouter = require("./routes/register");
+const userRouter = require("./routes/user");
 
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
