@@ -23,7 +23,7 @@ function HookRegister() {
   return (
     <div>
       <h1>Register</h1>
-      <Form >
+      <Form>
         <Form.Row className="justify-content-md-center">
           <Col xs="auto">
             <Form.Control
@@ -47,13 +47,11 @@ function HookRegister() {
               placeholder="Enter password"
             />
           </Col>
-          
+
           <Button variant="outline-info" onClick={register}>
-          Register
-        </Button>
+            Register
+          </Button>
         </Form.Row>
-        
-        
       </Form>
     </div>
   );

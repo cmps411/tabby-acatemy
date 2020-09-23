@@ -23,10 +23,11 @@ const port = process.env.PORT;
 
 app.use(
   cors({
-    origin: "http://localhost:3000", //react app location
+    origin: "http://localhost:3000", // <-- location of the react app we're connecting to
     credentials: true,
   })
 );
+
 //allows us to parse json!
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,17 +49,16 @@ app.use(passport.session());
 const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
 const userRouter = require("./routes/user");
-
-app.get("/", function (req, res) {
-
-});
+const logoutRouter = require("./routes/logout");
 
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/user", userRouter);
+app.use("/logout", logoutRouter);
 app.use("/auth", require("./routes/Gauth"));
 
 //from .env file
+
 const uri = process.env.ATLAS_URI;
 
 // The object passed in here (after uri) is just to remove deprecation warnings
