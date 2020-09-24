@@ -28,6 +28,15 @@ app.use(
   })
 );
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Methods", "GET");
+  req.header("Access-Control-Allow-Origin", "http://localhost:3000"); 
+  next();
+});
+
 //allows us to parse json!
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,6 +59,10 @@ const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
 const userRouter = require("./routes/user");
 const logoutRouter = require("./routes/logout");
+
+app.get("/", (req, res) => {
+
+});
 
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
