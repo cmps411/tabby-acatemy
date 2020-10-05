@@ -9,7 +9,7 @@ function HookLogout() {
       withCredentials: true,
       url: "http://localhost:5000/logout/",
     })
-      .then((res) => (window.location.href = "res"))
+      .then(window.location.href = "/")
       .catch((err) => console.log(err));
   };
 

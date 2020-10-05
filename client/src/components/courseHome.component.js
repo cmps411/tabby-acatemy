@@ -52,7 +52,7 @@ function HookCourseHome() {
         </Card.ImgOverlay>
       </Card>
     )
-  })
+  });
 
   return (
     
@@ -62,8 +62,6 @@ function HookCourseHome() {
       {allCourses}
 
     </div>
-      
-  );
-}
+  )}
 
 export default HookCourseHome;
