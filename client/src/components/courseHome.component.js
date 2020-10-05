@@ -1,87 +1,68 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Card, CardDeck, Image } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
+import axios from "axios";
 
 function HookCourseHome() {
+  const [courses, setCourses] = useState([]);
+
+  const getCourses = async() => {
+    const res = await axios.get('/courses');
+    setCourses(res.data.courses);
+  }
+
+  useEffect( () =>{
+    getCourses();
+  }, []);
+
+  const allCourses = courses.length > 0 && courses.map( (course, index) => {
+    return(
+      <Card style={{ width: "18rem", margin: "1rem" }}>
+        <Card.Img
+          width="100rem"
+          height="400rem"
+
+          src={require('./mathCard.png')}
+          alt="Under Construction"
+        />
+        <Card.ImgOverlay>
+          <Card.Img
+            width="30%"
+            height="50%"
+
+            variant="right"
+            src={require('./catPaw.png')}
+            alt="Under Construction"
+          />
+          <Card.Body>
+            <Card.Title
+            >
+              {course.courseName}
+            </Card.Title>
+            
+            <Card.Text>
+              {course.courseDesc}
+            </Card.Text>
+            <Button 
+              variant="warning"
+            >
+              View
+            </Button>
+          </Card.Body>
+        </Card.ImgOverlay>
+      </Card>
+    )
+  })
+
   return (
     
-    <CardDeck>
-      <Card style={{ width: "18rem", height: "300px"}}>
-        <Card.Img
-          variant="top"
-          src={require('./constructionCat.png')}
-          alt="Under Construction"
-        />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">View</Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: "18rem", height: "300px"}}>
-        <Card.Img
-          variant="top"
-          src={require('./constructionCat.png')}
-          alt="Under Construction"
-        />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">View</Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: "18rem", height: "300px"}}>
-        <Card.Img
-          variant="top"
-          src={require('./constructionCat.png')}
-          alt="Under Construction"
-        />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">View</Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: "18rem", height: "300px"}}>
-        <Card.Img
-          variant="top"
-          src={require('./constructionCat.png')}
-          alt="Under Construction"
-        />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">View</Button>
-        </Card.Body>
-      </Card>
-      <Card style={{ width: "18rem", height: "300px"}}>
-        <Card.Img
-          variant="top"
-          src={require('./constructionCat.png')}
-          alt="Under Construction"
-        />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">View</Button>
-        </Card.Body>
-      </Card>
-    </CardDeck>
+    <div 
+      class="row my-4 justify-content-center"
+    >
+      {allCourses}
+
+    </div>
+      
   );
 }
 
