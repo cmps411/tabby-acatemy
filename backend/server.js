@@ -8,6 +8,7 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const User = require("./models/user.model");
+const Course = require("./models/course.model")
 const multer = require("multer");
 const GridFsStorage = require("multer-gridfs-storage");
 const Grid = require("gridfs-stream");
@@ -16,10 +17,34 @@ const path = require("path");
 const dotenv = require("dotenv");
 require("./passport/passportConfig")(passport);
 require("./passport/PassportGoogleConfig")(passport);
+const restart = require("express");
+
 
 dotenv.config({ path: "./config.env" });
 const app = express();
 const port = process.env.PORT;
+const uri = process.env.ATLAS_URI;
+
+// The object passed in here (after uri) is just to remove deprecation warnings
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+
+const connection = mongoose.connection;
+
+connection.once("open", () => {
+  console.log("MongoDB database connection established successfully");
+});
+
+//error check
+connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+//start server!
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
+});
 
 app.use(
   cors({
@@ -53,41 +78,29 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
+app.get("/courses", async(req, res) => {
+  try{
+    const courses = await Course.find();
+    
+    res.json({
+      courses:courses
+    });
+    
+  } catch (error) {
+      console.log(error);
+    }
+});
 
+// Routes
 const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
 const userRouter = require("./routes/user");
+const courseRouter = require("./routes/course");
 const logoutRouter = require("./routes/logout");
-
-app.get("/", (req, res) => {
-
-});
 
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/user", userRouter);
+app.use("/course", courseRouter);
 app.use("/logout", logoutRouter);
 app.use("/auth", require("./routes/Gauth"));
-
-//from .env file
-
-const uri = process.env.ATLAS_URI;
-
-// The object passed in here (after uri) is just to remove deprecation warnings
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
-
-const connection = mongoose.connection;
-
-connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
-});
-
-//start server!
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});

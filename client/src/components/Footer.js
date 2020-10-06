@@ -9,7 +9,7 @@ function Footer(){
                 <hr />
                    <div className='row'>
                         <p>
-                            &copy;{new Date().getFullYear()} Tabby Acatemy
+                            &copy;{new Date().getFullYear()} Tabby Acatemy | All Meows Reserved | Purrs of Service | No Priacy, Only Cats
                         </p>
                    </div>
             </div>
