@@ -1,12 +1,12 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Card, CardDeck, Image } from "react-bootstrap";
+import { Button, Card, CardDeck } from "react-bootstrap";
 
 function HookCourseHome() {
   return (
     
     <CardDeck>
-      <Card style={{ width: "18rem", height: "300px"}}>
+      <Card style={{ width: "18rem", height: "200px"}}>
         <Card.Img
           variant="top"
           src={require('./constructionCat.png')}
