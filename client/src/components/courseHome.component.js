@@ -7,20 +7,22 @@ function HookCourseHome() {
   const [courses, setCourses] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
   //const [tags, setTags] = useState([]);
-  //const [query, setQuery] = useState([]);
+  const [query, setQuery] = useState("");
 
   const getCourses = async() => {
     const res = await axios.get('/courses');
     setCourses(res.data.courses);
   }
+  
+  const filterCourses = async() => {
+    const res = await axios.get('/courses')
+    setFilteredCourses(res.data.courses.filter((e) => e.courseName.includes(query)));
+  }
 
   useEffect( () =>{
     getCourses();
-    const filterCourses = () => {
-      setFilteredCourses(courses.filter((e) => e.courseName.includes("")))
-    };
-    filterCourses();
-  }, [courses]);
+    filterCourses()
+  }, [],);
 
   //QUERY TESTING
   
@@ -37,6 +39,11 @@ function HookCourseHome() {
   // }catch (error) {
   //   console.log(error);
   // }
+
+  // const queryCourses = () => {
+  //   setQuery("CMPS");
+  //   //setQuery(query.concat=("CMPS"));
+  // }  
 
   const showCourses = filteredCourses.length > 0 &&  filteredCourses.map( (course, index) => {
     return(
@@ -68,6 +75,7 @@ function HookCourseHome() {
             </Card.Text>
             <Button 
               variant="warning"
+              onClick={sayMeow}
             >
               View
             </Button>
@@ -77,13 +85,41 @@ function HookCourseHome() {
     )
   });
 
+  function sayMeow(props) {
+    alert("MEOW");
+  }
+
   function Example() {
     const [show, setShow] = useState(false);
   
     //const handleQuery = () => 
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+      setShow(true);
+    };
+
+    const handleCMPS = () => {
+      setShow(false);
+      setQuery("CMPS");
+      filterCourses();
+    };
+    const handleMATH = () => {
+      setShow(false);
+      setQuery("MATH");
+      filterCourses();
+    };
+    const handleENGL = () => {
+      setShow(false);
+      setQuery("ENGL");
+      filterCourses();
+    };
+    const handleShowAll = () => {
+      setShow(false);
+      setQuery("");
+      filterCourses();
+    };
+    
     return (
       <>
         <Button variant="warning" onClick={handleShow}>
@@ -96,14 +132,17 @@ function HookCourseHome() {
           </Modal.Header>
           
           <Modal.Footer>
-          <Button variant="warning" onClick={handleClose}>
+          <Button variant="warning" onClick={handleCMPS}>
               Computer Science
             </Button>
-            <Button variant="warning" onClick={handleClose}>
+            <Button variant="warning" onClick={handleMATH}>
               Math
             </Button>
-            <Button variant="warning" onClick={handleClose}>
+            <Button variant="warning" onClick={handleENGL}>
               English
+            </Button>
+            <Button variant="secondary" onClick={handleShowAll}>
+              Show All Courses
             </Button>
           </Modal.Footer>
         </Modal>
@@ -161,7 +200,6 @@ function HookCourseHome() {
         class="row my-4 justify-content-center"
       >
         {showCourses}
-
       </div>
     </div>
   )
