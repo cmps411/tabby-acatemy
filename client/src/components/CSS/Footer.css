@@ -1,0 +1,27 @@
+.main-footer{
+    color: rgba(255,255,255,.5);
+    background-color: #343a40;
+    padding-top: 3em;
+    position: relative;
+    bottom: 0%;
+    width: 100%;
+
+} 
+.row{
+    text-align: left;
+    margin: auto;
+} 
+
+.Column{
+    text-align: left;
+    width:20%;
+    margin: auto;
+}
+
+.Col-List{
+    list-style-type: none;
+    text-align: left;
+    width:100%;
+    margin: auto;
+    
+}   
