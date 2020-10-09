@@ -1,11 +1,10 @@
 import React from "react";
-import {Card} from 'react-bootstrap';
 
 
 
 function HookHome() {
   return (
-    <div classname="homePage">
+    <div className="homePage">
       <header className = "Acatemy Header">
       <h1>Welcome to Tabby Acatemy!</h1>
       <p className="MissionStatement">The goal of Tabby Acatemy is to help teach important subject fields through the light-heart theme of tabby cats!</p>

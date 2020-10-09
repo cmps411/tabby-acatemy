@@ -28,7 +28,7 @@ function HookRegister() {
           <Col xs="auto">
             <Form.Control
               onChange={(e) => setRegisterUsername(e.target.value)}
-              type="email"
+              type="text"
               placeholder="Enter Username"
             />
           </Col>

@@ -4,7 +4,7 @@ import { Button, Card, Modal } from "react-bootstrap";
 import axios from "axios";
 
 function HookCourseHome() {
-  const [courses, setCourses] = useState([]);
+  const [,setCourses] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
   //const [tags, setTags] = useState([]);
   const [query, setQuery] = useState("");
@@ -21,7 +21,7 @@ function HookCourseHome() {
 
   useEffect( () =>{
     getCourses();
-    filterCourses()
+    filterCourses();
   }, [],);
 
   //QUERY TESTING
@@ -52,7 +52,7 @@ function HookCourseHome() {
           width="100rem"
           height="400rem"
 
-          src={require('./mathCard.png')}
+          src={require('../images/mathCard.png')}
           alt="Under Construction"
         />
         <Card.ImgOverlay>
@@ -61,7 +61,7 @@ function HookCourseHome() {
             height="50%"
 
             variant="right"
-            src={require('./catPaw.png')}
+            src={require('../images/catPaw.png')}
             alt="Under Construction"
           />
           <Card.Body>
@@ -197,7 +197,7 @@ function HookCourseHome() {
         <Example />
       </div>
       <div 
-        class="row my-4 justify-content-center"
+        className="row my-4 justify-content-center"
       >
         {showCourses}
       </div>

@@ -36,10 +36,18 @@ const connection = mongoose.connection;
 
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
-});
+}); 
 
 //error check
 connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('../client/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"))
+  })
+}
 
 //start server!
 app.listen(port, () => {
@@ -98,9 +106,11 @@ const userRouter = require("./routes/user");
 const courseRouter = require("./routes/course");
 const logoutRouter = require("./routes/logout");
 
+
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/user", userRouter);
 app.use("/course", courseRouter);
 app.use("/logout", logoutRouter);
 app.use("/auth", require("./routes/Gauth"));
+
