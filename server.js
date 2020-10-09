@@ -117,15 +117,16 @@ app.get("/", (req, res, next) => {
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
-
-  app.get("/", (req, res, next) => {
-    res.redirect('https://guarded-forest-58961.herokuapp.com')
-    next()
-  });
   
-  app.get('*', (req, res) => {
+  app.get('*', (req, res, next) => {
     res.sendFile(path.resolve(__dirname, "/client", "build", "index.html"))
+    next()
   })
+
+  app.get("/", (req, res) => {
+    res.redirect('https://guarded-forest-58961.herokuapp.com')
+
+  });
 }
 
 //start server!
