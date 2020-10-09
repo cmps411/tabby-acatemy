@@ -21,7 +21,7 @@ function HookCourseHome() {
 
   useEffect( () =>{
     getCourses();
-
+    filterCourses();
   }, [],);
 
   //QUERY TESTING
