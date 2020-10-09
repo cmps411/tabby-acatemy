@@ -48,7 +48,7 @@ conf = {
 cors: {
 
   // origin handler
-  origin: ['http://localhost:3000', 'https://git.heroku.com/guarded-forest-58961.git', 'https://guarded-forest-58961.herokuapp.com', ],
+  origin: ['https://guarded-forest-58961.herokuapp.com', 'http://localhost:3000', 'https://accounts.google.com', 'null' ],
   optionsSuccessStatus: 200,
   credentials: true
 },
@@ -58,12 +58,10 @@ cors: {
 
 app.use(cors(conf.cors));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+app.use(function(req, res, next) { // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET");
-  req.header("Access-Control-Allow-Origin", "http://localhost:3000"); 
   next();
 });
 
