@@ -56,6 +56,7 @@ cors: {
 
 };
 
+
 app.use(cors(conf.cors));
 
 app.use(function(req, res, next) { // update to match the domain you will make the request from
@@ -109,9 +110,19 @@ app.use("/course", courseRouter);
 app.use("/logout", logoutRouter);
 app.use("/auth", require("./routes/Gauth"));
 
+app.get("/", (req, res, next) => {
+  res.redirect('http://localhost:3000')
+
+});
+
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
 
+  app.get("/", (req, res, next) => {
+    res.redirect('https://guarded-forest-58961.herokuapp.com')
+  
+  });
+  
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, "/client", "build", "index.html"))
   })
