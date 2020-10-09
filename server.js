@@ -41,14 +41,22 @@ connection.once("open", () => {
 //error check
 connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+conf = {
 
 
-app.use(
-  cors({
-    origin: "http://localhost:3000", // <-- location of the react app we're connecting to
-    credentials: true,
-  })
-);
+// Cross Origin Resource Sharing Options
+cors: {
+
+  // origin handler
+  origin: ['http://localhost:3000', 'https://git.heroku.com/guarded-forest-58961.git', 'https://guarded-forest-58961.herokuapp.com', ],
+  optionsSuccessStatus: 200,
+  credentials: true
+},
+
+
+};
+
+app.use(cors(conf.cors));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
