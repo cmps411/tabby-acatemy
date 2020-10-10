@@ -10,12 +10,12 @@ function HookCourseHome() {
   const [query, setQuery] = useState("");
 
   const getCourses = async() => {
-    const res = await axios.get('/courses');
+    const res = await axios.get('/api/courses');
     setCourses(res.data.courses);
   }
   
   const filterCourses = async() => {
-    const res = await axios.get('/courses')
+    const res = await axios.get('/api/courses')
     setFilteredCourses(res.data.courses.filter((e) => e.courseName.includes(query)));
   }
 

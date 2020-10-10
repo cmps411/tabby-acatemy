@@ -79,7 +79,7 @@ const logoutRouter = require("./routes/logout");
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/user", userRouter);
-app.use("/courses", coursesRouter);
+app.use("/api/courses", coursesRouter);
 app.use("/logout", logoutRouter);
 app.use("/auth", require("./routes/Gauth"));
 
