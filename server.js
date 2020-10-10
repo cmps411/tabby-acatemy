@@ -41,21 +41,13 @@ connection.once("open", () => {
 //error check
 connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var wl = ['https://guarded-forest-58961.herokuapp.com', 'http://localhost:3000' ]
 conf = {
+
 cors: {
-  origin: function (origin, callback) {
-    if (wl.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS!'))
-    }
-  },
+  origin: ['https://guarded-forest-58961.herokuapp.com', 'http://localhost:3000' ],
   optionsSuccessStatus: 200,
   credentials: true
-}
-
-};
+}};
 
 
 app.use(cors(conf.cors));
