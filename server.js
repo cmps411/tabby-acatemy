@@ -48,7 +48,7 @@ conf = {
 cors: {
 
   // origin handler
-  origin: ['https://guarded-forest-58961.herokuapp.com', 'http://localhost:3000', 'https://accounts.google.com', 'null' ],
+  origin: ['https://guarded-forest-58961.herokuapp.com', 'http://localhost:3000' ],
   optionsSuccessStatus: 200,
   credentials: true
 },
