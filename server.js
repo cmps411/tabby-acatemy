@@ -43,30 +43,14 @@ connection.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 conf = {
 
-
-// Cross Origin Resource Sharing Options
 cors: {
-
-  // origin handler
   origin: ['https://guarded-forest-58961.herokuapp.com', 'http://localhost:3000' ],
   optionsSuccessStatus: 200,
   credentials: true
-},
-
-
-};
+}};
 
 
 app.use(cors(conf.cors));
-
-app.all('*', function(req, res, next) { 
-  var origin = req.get('origin'); 
-  res.header('Access-Control-Allow-Origin', origin);
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin");
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "GET");
-  next();
-});
 
 //allows us to parse json!
 app.use(bodyParser.json());
@@ -120,7 +104,3 @@ if(process.env.NODE_ENV === 'production') {
   })
 }
 
-//start server!
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
