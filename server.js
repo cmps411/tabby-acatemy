@@ -45,7 +45,6 @@ conf = {
 
 cors: {
   origin: ['https://guarded-forest-58961.herokuapp.com', 'http://localhost:3000' ],
-  optionsSuccessStatus: 200,
   credentials: true
 }};
 
@@ -68,31 +67,20 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/courses", async(req, res) => {
-  try{
-    const courses = await Course.find();
-    
-    res.json({
-      courses:courses
-    });
-    
-  } catch (error) {
-      console.log(error);
-    }
-});
+
 
 // Routes
 const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
 const userRouter = require("./routes/user");
-const courseRouter = require("./routes/course");
+const coursesRouter = require("./routes/course");
 const logoutRouter = require("./routes/logout");
 
 
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/user", userRouter);
-app.use("/course", courseRouter);
+app.use("/courses", coursesRouter);
 app.use("/logout", logoutRouter);
 app.use("/auth", require("./routes/Gauth"));
 

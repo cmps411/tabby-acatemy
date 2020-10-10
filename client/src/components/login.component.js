@@ -10,7 +10,7 @@ function HookLogin() {
   const Glogin = () => {
     Axios({
       method: "GET",
-      url: "http://localhost:5000/auth/google",
+      url: "/auth/google",
     })
       .then()
       .catch((err) => console.log(err));
@@ -24,7 +24,7 @@ function HookLogin() {
         password: loginPassword,
       },
       withCredentials: true,
-      url: "http://localhost:5000/login",
+      url: "/login",
     }).then(window.location.href = "/").catch((err) => console.log(err));
   };
 
