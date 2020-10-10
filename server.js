@@ -22,7 +22,6 @@ const restart = require("express");
 
 dotenv.config({ path: "./config.env" });
 const app = express();
-const port = process.env.PORT;
 const uri = process.env.ATLAS_URI;
 
 // The object passed in here (after uri) is just to remove deprecation warnings
@@ -92,6 +91,9 @@ if(process.env.NODE_ENV === 'production') {
   })
 }
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`)
+const normalizePort = port => parseInt(port, 10)
+const PORT = normalizePort(process.env.PORT || 5000);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port: ${PORT}`)
 })

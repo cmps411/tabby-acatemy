@@ -24,7 +24,7 @@ function HookLogin() {
         password: loginPassword,
       },
       withCredentials: true,
-      url: "/login",
+      url: "http://localhost:5000/login",
     }).then(window.location.href = "/").catch((err) => console.log(err));
   };
 
