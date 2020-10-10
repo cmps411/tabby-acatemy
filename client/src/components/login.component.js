@@ -8,16 +8,8 @@ function HookLogin() {
   const [loginPassword, setLoginPassword] = useState("");
 
   const Glogin = () => {
-    Axios({
-      method: "GET",
-      url: "http://localhost:3000",
-    })
-      .then(
-        (
-          window.location.href =
-          "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fauth%2Fgoogle%2Fcallback&scope=profile&client_id=66597841321-k12b065nv1v0c15ed698spbbcjsj9dbh.apps.googleusercontent.com")
-      )
-      .catch((err) => console.log(err));
+    window.location.href =
+    "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fauth%2Fgoogle%2Fcallback&scope=profile&client_id=66597841321-k12b065nv1v0c15ed698spbbcjsj9dbh.apps.googleusercontent.com"
   };
 
   const login = () => {
