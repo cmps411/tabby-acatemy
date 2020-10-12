@@ -10,7 +10,7 @@ useEffect (() => {
  Axios({
     method: "GET",
     withCredentials: true,
-    url: "http://localhost:5000/user",
+    url: "/api/user",
   }).then((res) => {
     setData(res.data);
     console.log(res.data);
@@ -26,7 +26,7 @@ useEffect (() => {
         <Navbar.Collapse id="basic-navbar-nav">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-              <Link to="/Courses" className="nav-link">
+              <Link to="/courses" className="nav-link">
                 Courses
               </Link>
             </li>

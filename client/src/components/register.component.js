@@ -16,7 +16,7 @@ function HookRegister() {
         email: registerEmail,
       },
       withCredentials: true,
-      url: "/register",
+      url: "/api/register",
     }).then((res) => console.log(res));
   };
 
