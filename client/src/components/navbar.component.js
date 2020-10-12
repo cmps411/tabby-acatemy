@@ -26,7 +26,7 @@ useEffect (() => {
         <Navbar.Collapse id="basic-navbar-nav">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-              <Link to="/Courses" className="nav-link">
+              <Link to="/courses" className="nav-link">
                 Courses
               </Link>
             </li>

@@ -22,8 +22,8 @@ function App() {
       <div className="App">
         <Navbar />
         <Route path="/" exact component={HookHome} />
-        <Route path="/Courses" exact component={HookAuthentication} />
-        <Route path='/login' exact component={HookCourseHome} />
+        <Route path="/login" exact component={HookAuthentication} />
+        <Route path='/courses' exact component={HookCourseHome} />
         <Route path='/profile' component={HookProfile} />
       </div>
     </Router>
