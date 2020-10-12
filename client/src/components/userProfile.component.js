@@ -8,7 +8,7 @@ function HookProfile() {
     Axios({
       method: "GET",
       withCredentials: true,
-      url: "http://localhost:5000/user",
+      url: "/api/user",
     }).then((res) => {
       setData(res.data);
       console.log(res.data);

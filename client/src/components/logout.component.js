@@ -6,7 +6,7 @@ function HookLogout() {
   const logout = () => {
     Axios({
       method: "GET",
-      url: "/logout",
+      url: "/api/logout",
     })
       .then(window.location.href = "/")
       .catch((err) => console.log(err));
