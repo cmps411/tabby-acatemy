@@ -27,7 +27,8 @@ module.exports = function (passport) {
     User.findOne({ _id: id }, (err, user) => {
       const userInformation = {
         username: user.username,
-        gid: user.googleId
+        gid: user.googleId,
+        id: user.id
       };
       cb(err, userInformation);
     });

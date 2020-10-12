@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
 function HookProfile() {
-  const [, setData] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     Axios({
@@ -17,7 +17,7 @@ function HookProfile() {
 
   return (
     <div>
-      {/*data ? <authenticatedProfile /> : you must be logged in to view this page!*/}
+     {data ? <h1>{data.id}</h1> : null}
     </div>
   );
 }

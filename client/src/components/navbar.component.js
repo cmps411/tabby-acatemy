@@ -39,7 +39,7 @@ useEffect (() => {
               {data ? <HookLogout /> : null}
             </li>
             <li className="navbar-item">
-              <Link to='/' className="nav-link">
+              <Link to='/profile' className="nav-link">
             {data ? <p>{data.username}</p> : null}
             </Link>
             </li>

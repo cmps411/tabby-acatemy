@@ -81,7 +81,7 @@ app.use("/api/register", registerRouter);
 app.use("/api/user", userRouter);
 app.use("/api/courses", coursesRouter);
 app.use("/api/logout", logoutRouter);
-app.use("/api/auth", require("./routes/Gauth"));
+app.use("/auth", require("./routes/Gauth"));
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
