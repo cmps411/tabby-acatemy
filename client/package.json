@@ -36,5 +36,5 @@
     ]
     
   },
-  "proxy": {"target": "http://localhost:5000", "ChangeOrigin": true}
+  "proxy": "http://localhost:5000"
 }
