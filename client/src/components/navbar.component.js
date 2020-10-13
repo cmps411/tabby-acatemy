@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import {Navbar} from 'react-bootstrap'
+import {Navbar} from 'react-bootstrap';
+import Paw from '../images/pawPrint.svg'
+
 function HookNavbar() {
 const [data, setData] = useState(null);
 
@@ -18,9 +20,16 @@ useEffect (() => {
 
 
     return (
-      <Navbar style={{maxHeight: 50}}className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/" className="navbar-brand">
-          <div style={{marginBottom: 7 }}>TabbyAcatemy</div>
+      <Navbar className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <Link to="/" className="navbar-brand" color="warning">
+          <img
+            src={Paw}
+            width="1rem"
+            height="1rem"
+            alt=""
+          />
+          Tabby Acatemy
+
         </Link>
         <Navbar.Collapse id="basic-navbar-nav">
           <ul className="navbar-nav mr-auto">
