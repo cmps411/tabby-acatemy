@@ -1,7 +1,16 @@
-import React from "react";
+import React from "react"
 import './CSS/homepage.css'
+import Carousel from 'react-elastic-carousel'
+import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Card, Container} from 'react-bootstrap'
+
+const breakPoints = [
+  { width: 200, itemsToShow: 1},
+  { width: 200, itemsToShow: 2}, 
+  { width: 200, itemsToShow: 3},
+  {}
+];
 
 
 function HookHome() {
@@ -22,7 +31,7 @@ function HookHome() {
             <Card.Text className='row'>
               <div className='col'>
                 Tabby Acatemy is a website aimed at helping people learn a variety of different topics, similiar to many other websites. 
-                What makes Tabby Acatemy different is the use of our favorite feline friends to help aid and guide our users to through their learning experience.
+                What makes Tabby Acatemy different is the use of our favorite feline friends to help create a more positive environment for work.
               </div>
               <div className='colImg'>
                 <Card.Img className='AboutImg' src={require('../images/cat-cap-gown.png')}/>  
@@ -37,7 +46,7 @@ function HookHome() {
             </Card.Title>
             <Card.Text className='row'>
               <div className='col'>
-                Our goal is to be able to provide a productive, fun, and relaxing learning expereince through the use of cats throughout the course lectures and assignments
+                Our goal is to be able to provide a productive, fun, and relaxing learning expereince through the use of cats throughout the course lectures and assignments. 
               </div>
               <div className='colImg'>
                 <Card.Img className='AboutImg2' src={require('../images/cap_cat.jpg')}/>  

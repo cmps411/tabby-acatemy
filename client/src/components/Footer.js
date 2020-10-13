@@ -29,7 +29,7 @@ function Footer(){
             {/* Where we will stick the relevent information to fill out the footer */}
             <hr />
                 <div className='row'>
-                    <div className='col'>
+                    <div className='col2'>
                         <div>
                             <p>
                                 &copy;{new Date().getFullYear()} Tabby Acatemy | All Kittens Reserved | Purrs of Service | Privacy Pawlicy

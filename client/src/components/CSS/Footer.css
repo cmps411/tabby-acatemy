@@ -18,6 +18,12 @@
     margin: auto;
 }
 
+.col2{
+    text-align: center;
+    width:10x 0px;
+    margin: auto;
+}
+
 .Col-List{
     list-style-type: none;
     text-align: left;
@@ -27,6 +33,7 @@
 }   
 
 .ContactUs{
+    text-align: right;
     border: none;
     color: rgba(255,255,255,.5);
     background-color:#343a40;
