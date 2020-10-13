@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import HookLogout from "./logout.component";
 import {Navbar} from 'react-bootstrap'
 function HookNavbar() {
 const [data, setData] = useState(null);
@@ -10,7 +9,7 @@ useEffect (() => {
  Axios({
     method: "GET",
     withCredentials: true,
-    url: "http://localhost:5000/user",
+    url: "/api/user",
   }).then((res) => {
     setData(res.data);
     console.log(res.data);
@@ -26,7 +25,7 @@ useEffect (() => {
         <Navbar.Collapse id="basic-navbar-nav">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-              <Link to="/Courses" className="nav-link">
+              <Link to="/courses" className="nav-link">
                 Courses
               </Link>
             </li>
@@ -36,10 +35,7 @@ useEffect (() => {
               </Link>
             </li>
             <li className="navbar-item">
-              {data ? <HookLogout /> : null}
-            </li>
-            <li className="navbar-item">
-              <Link to='/' className="nav-link">
+              <Link to='/profile' className="nav-link">
             {data ? <p>{data.username}</p> : null}
             </Link>
             </li>

@@ -4,24 +4,22 @@ import { Button, Card, Modal } from "react-bootstrap";
 import axios from "axios";
 
 function HookCourseHome() {
-  const [,setCourses] = useState([]);
-  const [filteredCourses, setFilteredCourses] = useState([]);
+  const [courses, setCourses] = useState([]);
   //const [tags, setTags] = useState([]);
-  const [query, setQuery] = useState("");
+  //const [query, setQuery] = useState("");
 
   const getCourses = async() => {
-    const res = await axios.get('/courses');
+    const res = await axios.get('/api/courses');
     setCourses(res.data.courses);
   }
   
-  const filterCourses = async() => {
-    const res = await axios.get('/courses')
-    setFilteredCourses(res.data.courses.filter((e) => e.courseName.includes(query)));
-  }
+  // const filterCourses = async() => {
+  //   const res = await axios.get('/api/courses')
+  //   setFilteredCourses(res.data.courses.filter((e) => e.courseName.includes(query)));
+  // }
 
   useEffect( () =>{
     getCourses();
-    filterCourses();
   }, [],);
 
   //QUERY TESTING
@@ -45,7 +43,7 @@ function HookCourseHome() {
   //   //setQuery(query.concat=("CMPS"));
   // }  
 
-  const showCourses = filteredCourses.length > 0 &&  filteredCourses.map( (course, index) => {
+  const showCourses = courses.length > 0 &&  courses.map( (course, index) => {
     return(
       <Card style={{ width: "18rem", margin: "1rem" }}>
         <Card.Img
@@ -94,30 +92,28 @@ function HookCourseHome() {
   
     //const handleQuery = () => 
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => {
+    const handleClose = () => {
+      setShow(false);
+    };
+      const handleShow = () => {
       setShow(true);
     };
 
-    const handleCMPS = () => {
-      setShow(false);
-      setQuery("CMPS");
-      filterCourses();
+    const handleCMPS = async() => {
+      const res = await axios.get('/api/courses')
+      setCourses(res.data.courses.filter((e) => e.courseName.includes("CMPS")));
+    }
+    const handleMATH = async() => {
+      const res = await axios.get('/api/courses')
+      setCourses(res.data.courses.filter((e) => e.courseName.includes("MATH")));
     };
-    const handleMATH = () => {
-      setShow(false);
-      setQuery("MATH");
-      filterCourses();
+    const handleENGL = async() => {
+      const res = await axios.get('/api/courses')
+      setCourses(res.data.courses.filter((e) => e.courseName.includes("ENGL")));
     };
-    const handleENGL = () => {
-      setShow(false);
-      setQuery("ENGL");
-      filterCourses();
-    };
-    const handleShowAll = () => {
-      setShow(false);
-      setQuery("");
-      filterCourses();
+    const handleShowAll = async() => {
+      const res = await axios.get('/api/courses')
+      setCourses(res.data.courses.filter((e) => e.courseName.includes("")));
     };
     
     return (

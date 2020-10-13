@@ -76,11 +76,11 @@ const coursesRouter = require("./routes/course");
 const logoutRouter = require("./routes/logout");
 
 
-app.use("/login", loginRouter);
-app.use("/register", registerRouter);
-app.use("/user", userRouter);
-app.use("/courses", coursesRouter);
-app.use("/logout", logoutRouter);
+app.use("/api/login", loginRouter);
+app.use("/api/register", registerRouter);
+app.use("/api/user", userRouter);
+app.use("/api/courses", coursesRouter);
+app.use("/api/logout", logoutRouter);
 app.use("/auth", require("./routes/Gauth"));
 
 if(process.env.NODE_ENV === 'production') {
