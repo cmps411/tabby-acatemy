@@ -1,0 +1,37 @@
+.AboutCard{
+    width: 90rem;
+    margin: 2rem
+
+}
+
+.AboutHeader{
+    font-weight: bold;
+}
+
+.AboutImg{
+    display: block;
+    max-width: 20rem;
+    max-height: 15rem;
+}
+.AboutImg2{
+    display: block;
+    max-width: 20rem;
+    max-height: 15rem; 
+}
+.row{
+    text-align: left;
+    margin: 0em;
+} 
+
+.col{
+    text-align: left;
+    width:10x 0px;
+    margin: auto;
+    font-size: larger;
+}
+
+.colImg{
+    text-align: right;
+    width:10x 0px;
+    margin: auto;
+}
