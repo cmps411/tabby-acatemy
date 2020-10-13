@@ -25,7 +25,7 @@ function HookProfile() {
      <div>
        <h1>{data.username}</h1> 
        <img src={data.image} alt='Avatar'></img>
-       <div><HookLogout /> <HookChangeProfilePic /></div>
+       <div><HookLogout /></div>
        <hr></hr>
        <h2>Achievements</h2>
        <hr></hr>
