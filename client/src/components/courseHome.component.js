@@ -72,10 +72,16 @@ function HookCourseHome() {
               {course.courseDesc.substring(0, 57)}
             </Card.Text>
             <Button 
-              variant="warning"
-              onClick={sayMeow}
+            style={{justifyContent:'left', marginRight:'1.5rem'}}
+            variant="outline-dark"
+            onClick={sayMeow}
             >
-              View
+              Details
+            </Button>
+            <Button
+              variant="warning"
+            >
+              Add to Cart
             </Button>
           </Card.Body>
         </Card.ImgOverlay>
