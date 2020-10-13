@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import HookLogout from "./logout.component";
 import {Navbar} from 'react-bootstrap'
 function HookNavbar() {
 const [data, setData] = useState(null);
@@ -34,9 +33,6 @@ useEffect (() => {
               <Link to="/login" className="nav-link">
                 Login
               </Link>
-            </li>
-            <li className="navbar-item">
-              {data ? <HookLogout /> : null}
             </li>
             <li className="navbar-item">
               <Link to='/profile' className="nav-link">
