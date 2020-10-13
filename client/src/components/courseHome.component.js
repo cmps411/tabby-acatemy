@@ -218,6 +218,11 @@ function HookCourseHome() {
       </div>
       <h4>Items in Cart:</h4>
       {showCartItems}
+      <Button variant='warning'>
+        Check Out
+      </Button>
+      <br/>
+      <br/>
       <br/>
     </div>
   )
