@@ -48,7 +48,7 @@ function HookRegister() {
             />
           </Col>
 
-          <Button variant="outline-info" onClick={register}>
+          <Button variant="warning" onClick={register}>
             Register
           </Button>
         </Form.Row>

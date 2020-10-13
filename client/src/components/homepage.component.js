@@ -1,46 +1,111 @@
-import React from "react";
+import React, { useState } from "react";
+import Axios from "axios";
 import './CSS/homepage.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Card, Container} from 'react-bootstrap'
-
+import {Card, Button, Form, Col, Row} from 'react-bootstrap'
 
 function HookHome() {
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+
+  const register = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: registerUsername,
+        password: registerPassword,
+        email: registerEmail,
+      },
+      withCredentials: true,
+      url: "/api/register",
+    }).then((res) => console.log(res));
+  };
+
   return (
-    <div className="homePage">
-      <header className = "Acatemy Header">
-      <h1>Welcome to Tabby Acatemy!</h1>
-        {/* <Card classname = "card-body" style= {{}}>
-          <Card.Img src={require('./cat-cap-gown.png')}/>
-        </Card> */}
-      </header>
+    <div>
+      <div style={{position:'relative'}}>
+        <img
+          src="tabbyAcatemy.png"
+          width= "100%"
+          style={{textAlign: "left", verticalAlign:"middle", position:'relative'}}
+        />
+
+        <div style={{textAlign: "left", position:'absolute', top:'6rem', left:'5rem'}}>
+          <h1>Welcome to Tabby Acatemy!</h1>
+          <p>Home of Pupaws</p>
+          <br/>
+          <br/>
+
+          <h4>Join today!</h4>
+          <br/>
+          <Form style={{width:'15rem'}}>
+              <Form.Group>
+                <Form.Control
+                  onChange={(e) => setRegisterUsername(e.target.value)}
+                  type="text"
+                  placeholder="Your Username"
+                />
+                <br/>
+                <Form.Control
+                  onChange={(e) => setRegisterEmail(e.target.value)}
+                  type="email"
+                  placeholder="Your E-mail"
+                />
+                <br/>
+                <Form.Control
+                  onChange={(e) => setRegisterPassword(e.target.value)}
+                  type="password"
+                  placeholder="Your Password"
+                />
+                <br/>
+              <Button variant="warning" onClick={register}>
+                Register
+              </Button>
+            </Form.Group>
+          </Form>
+        </div>
+      </div>
+      
       <body>
-        <Card className='AboutCard'>
+        <Card class='col-sm-8' style={{border: 'none', margin: '3rem'}}>
+          
           <Card.Body>
-            <Card.Title>
-              <h4 className='AboutHeader'>About Tabby Acatemy</h4>
-            </Card.Title>
-            <Card.Text className='row'>
-              <div className='col'>
-                Tabby Acatemy is a website aimed at helping people learn a variety of different topics, similiar to many other websites. 
-                What makes Tabby Acatemy different is the use of our favorite feline friends to help aid and guide our users to through their learning experience.
+          <Card.Title>
+              <h4>About Us</h4>
+          </Card.Title>
+            
+            <Card.Text class='row'>
+              <div className='col-sm-8'>
+                Tabby Acatemy is a website aimed at helping people learn a variety of different topics with the aid of friendly felines to guide our users to through their learning experience.
               </div>
               <div className='colImg'>
-                <Card.Img className='AboutImg' src={require('../images/cat-cap-gown.png')}/>  
+                <Card.Img 
+                className='AboutImg' 
+                src={require('../images/cat-cap-gown.png')}
+                height="100%"
+                width="100%"
+                />  
               </div>
             </Card.Text>
           </Card.Body>
         </Card>
-        <Card className='AboutCard'>
+        <Card class='col-sm-8' style={{border: 'none', margin: '3rem'}}>
           <Card.Body>
             <Card.Title>
-              <h4 className='AboutHeader'>Mission of Tabby Acatemy</h4>
+              <h4>Our Mission</h4>
             </Card.Title>
             <Card.Text className='row'>
-              <div className='col'>
+              <div className='col-sm-8'>
                 Our goal is to be able to provide a productive, fun, and relaxing learning expereince through the use of cats throughout the course lectures and assignments
               </div>
               <div className='colImg'>
-                <Card.Img className='AboutImg2' src={require('../images/cap_cat.jpg')}/>  
+                <Card.Img 
+                className='AboutImg2' 
+                src={require('../images/cap_cat.jpg')}
+                width="100%"
+                height="100%"
+                />  
               </div>
             </Card.Text>
           </Card.Body>
