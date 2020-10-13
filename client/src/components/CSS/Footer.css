@@ -12,9 +12,9 @@
     margin: auto;
 } 
 
-.Column{
+.col{
     text-align: left;
-    width:20%;
+    width:10x 0px;
     margin: auto;
 }
 
@@ -25,3 +25,12 @@
     margin: auto;
     
 }   
+
+.ContactUs{
+    border: none;
+    color: rgba(255,255,255,.5);
+    background-color:#343a40;
+    touch-action: none; 
+    font-size: larger;
+    
+}
