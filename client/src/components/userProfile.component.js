@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-
+import HookLogout from "./logout.component";
 function HookProfile() {
-  const [, setData] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     Axios({
@@ -17,7 +17,13 @@ function HookProfile() {
 
   return (
     <div>
-      {/*data ? <authenticatedProfile /> : you must be logged in to view this page!*/}
+     {data ? 
+     <div>
+       <h1>{data.username}</h1> 
+       <div><HookLogout /></div>
+     </div>
+     
+     : null}
     </div>
   );
 }

@@ -8,12 +8,7 @@ function HookLogin() {
   const [loginPassword, setLoginPassword] = useState("");
 
   const Glogin = () => {
-    Axios({
-      method: "GET",
-      url: "/api/auth/google",
-    })
-      .then()
-      .catch((err) => console.log(err));
+window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=http%3A%2F%2Fguarded-forest-58961.herokuapp.com%2Fauth%2Fgoogle%2Fcallback&scope=profile&client_id=66597841321-k12b065nv1v0c15ed698spbbcjsj9dbh.apps.googleusercontent.com"
   };
 
   const login = () => {
@@ -25,7 +20,7 @@ function HookLogin() {
       },
       withCredentials: true,
       url: "/api/login",
-    }).then(window.location.href = "/").catch((err) => console.log(err));
+    }).then((window.location.href = "/")).catch((err) => console.log(err));
   };
 
   return (
@@ -36,7 +31,7 @@ function HookLogin() {
           <Col xs="auto">
             <Form.Control
               onChange={(e) => setLoginUsername(e.target.value)}
-              type="email"
+              type="text"
               placeholder="Enter Username"
             />
           </Col>
