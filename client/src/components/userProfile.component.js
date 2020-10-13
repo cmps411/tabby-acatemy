@@ -19,16 +19,22 @@ function HookProfile() {
 
   return (
     <div>
+    <br/>
+    <br/>
      {data ? 
      <div>
        <h1>{data.username}</h1> 
-       <img src={data.image}></img>
+       <img src={data.image} alt='Avatar'></img>
        <div><HookLogout /> <HookChangeProfilePic /></div>
        <hr></hr>
        <h2>Achievements</h2>
        <hr></hr>
+       <p>You have none yet!</p>
+       <br/>
        <h2>Certificates</h2>
        <hr></hr>
+       <p>Study for certificate today!</p>
+       <br/>
        <p>Member since: {data.date}</p>
      </div>
      

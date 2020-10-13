@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import './CSS/homepage.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Card, Button, Form, Col, Row} from 'react-bootstrap'
+import {Card, Button, Form} from 'react-bootstrap'
 
 function HookHome() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
+  const [data, setData] = useState(null);
 
   const register = () => {
     Axios({
@@ -22,6 +23,17 @@ function HookHome() {
     }).then((res) => console.log(res));
   };
 
+  useEffect (() => {
+    Axios({
+       method: "GET",
+       withCredentials: true,
+       url: "/api/user",
+     }).then((res) => {
+       setData(res.data);
+       console.log(res.data);
+     });
+   }, []);
+
   return (
     <div>
       <div style={{position:'relative'}}>
@@ -29,6 +41,7 @@ function HookHome() {
           src="tabbyAcatemy.png"
           width= "100%"
           style={{textAlign: "left", verticalAlign:"middle", position:'relative'}}
+          alt='Background'
         />
 
         <div style={{textAlign: "left", position:'absolute', top:'6rem', left:'5rem'}}>
@@ -36,6 +49,8 @@ function HookHome() {
           <p>Home of Pupaws</p>
           <br/>
           <br/>
+
+          {data ? <div><h2>How are you today, {data.username}?</h2></div> : null}
 
           <h4>Join today!</h4>
           <br/>

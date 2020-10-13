@@ -5,9 +5,14 @@ import HookLogin from "./login.component";
 
 function HookAuthentication() {
   return (
+    
     <div>
-      <HookRegister />
+      <br/>
       <HookLogin />
+      <br/>
+      <HookRegister />
+      <br/>
+      <br/>
       {/*<HookGetUser />*/}
     </div>
   );

@@ -7,7 +7,6 @@ function HookRegister() {
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
 
-
   const register = () => {
     Axios({
       method: "POST",
@@ -23,21 +22,21 @@ function HookRegister() {
 
   return (
     <div>
-      <h1>Register</h1>
+      <h1>New User?</h1>
       <Form>
         <Form.Row className="justify-content-md-center">
           <Col xs="auto">
             <Form.Control
               onChange={(e) => setRegisterUsername(e.target.value)}
               type="text"
-              placeholder="Enter Username"
+              placeholder="Your Username"
             />
           </Col>
           <Col xs="auto">
             <Form.Control
               onChange={(e) => setRegisterEmail(e.target.value)}
               type="email"
-              placeholder="Enter email"
+              placeholder="Your E-mail"
             />
           </Col>
 
@@ -45,7 +44,7 @@ function HookRegister() {
             <Form.Control
               onChange={(e) => setRegisterPassword(e.target.value)}
               type="password"
-              placeholder="Enter password"
+              placeholder="Your Password"
             />
           </Col>
 

@@ -26,10 +26,9 @@ useEffect (() => {
             src={Paw}
             width="1rem"
             height="1rem"
-            alt=""
+            alt="Icon"
           />
           Tabby Acatemy
-
         </Link>
         <Navbar.Collapse id="basic-navbar-nav">
           <ul className="navbar-nav mr-auto">
@@ -50,7 +49,7 @@ useEffect (() => {
             </li>
             <li className="navbar-item">
               <Link to='/profile' className="nav-link" style={{maxHeight: 50}}>
-            {data ? <div><img style={{maxHeight: 40}} src={data.image}></img></div> : null}
+            {data ? <div><img style={{maxHeight: 40}} src={data.image} alt='Avatar'></img></div> : null}
             </Link>
             </li>
           </ul>

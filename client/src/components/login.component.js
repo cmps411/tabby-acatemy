@@ -32,7 +32,7 @@ window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?response_ty
             <Form.Control
               onChange={(e) => setLoginUsername(e.target.value)}
               type="text"
-              placeholder="Enter Username"
+              placeholder="Your Username"
             />
           </Col>
 
@@ -40,11 +40,11 @@ window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?response_ty
             <Form.Control
               onChange={(e) => setLoginPassword(e.target.value)}
               type="password"
-              placeholder="Enter password"
+              placeholder="Your Password"
             />
           </Col>
-          <Button variant="warning" onClick={login}>
-            Login
+          <Button variant="warning" onClick={login} style={{marginRight:'0.5rem'}}>
+            Log In
           </Button>
 
           <Button variant="warning" onClick={Glogin}>
