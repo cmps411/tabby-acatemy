@@ -19,8 +19,9 @@ const userSchema = new Schema(
       trim: true,
     },
     email: String,
-    image: String,
-    date: String,
+    image: {type: String, default: 'https://i.imgur.com/Geb0OcA.png'},
+    date: {type: Date, default: Date.now},
+    tps: {type: Number, default: 0},
   },
 
 );

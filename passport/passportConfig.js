@@ -28,7 +28,9 @@ module.exports = function (passport) {
       const userInformation = {
         username: user.username,
         gid: user.googleId,
-        id: user.id
+        id: user.id,
+        date: user.date,
+        image: user.image
       };
       cb(err, userInformation);
     });

@@ -14,8 +14,8 @@ function HookLogout() {
 
   return (
     <div>
-      <Button variant="outline-info" onClick={logout}>
-        logout
+      <Button variant="warning" onClick={logout}>
+        Logout
       </Button>
     </div>
   );
