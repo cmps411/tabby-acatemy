@@ -18,9 +18,9 @@ useEffect (() => {
 
 
     return (
-      <Navbar className="navbar navbar-dark bg-dark navbar-expand-lg">
+      <Navbar style={{maxHeight: 50}}className="navbar navbar-dark bg-dark navbar-expand-lg">
         <Link to="/" className="navbar-brand">
-          TabbyAcatemy
+          <div style={{marginBottom: 7 }}>TabbyAcatemy</div>
         </Link>
         <Navbar.Collapse id="basic-navbar-nav">
           <ul className="navbar-nav mr-auto">
@@ -35,8 +35,13 @@ useEffect (() => {
               </Link>
             </li>
             <li className="navbar-item">
-              <Link to='/profile' className="nav-link">
-            {data ? <p>{data.username}</p> : null}
+              <Link to='/profile' className="nav-link" style={{maxHeight: 50}}>
+            {data ? <div><p>{data.username}</p></div> : null}
+            </Link>
+            </li>
+            <li className="navbar-item">
+              <Link to='/profile' className="nav-link" style={{maxHeight: 50}}>
+            {data ? <div><img style={{maxHeight: 40}} src={data.image}></img></div> : null}
             </Link>
             </li>
           </ul>

@@ -7,6 +7,7 @@ function HookRegister() {
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
 
+
   const register = () => {
     Axios({
       method: "POST",
@@ -48,7 +49,7 @@ function HookRegister() {
             />
           </Col>
 
-          <Button variant="outline-info" onClick={register}>
+          <Button variant="warning" onClick={register}>
             Register
           </Button>
         </Form.Row>

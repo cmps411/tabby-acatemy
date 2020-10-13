@@ -43,11 +43,11 @@ window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?response_ty
               placeholder="Enter password"
             />
           </Col>
-          <Button variant="outline-info" onClick={login}>
-            login
+          <Button variant="warning" onClick={login}>
+            Login
           </Button>
 
-          <Button variant="outline-info" onClick={Glogin}>
+          <Button variant="warning" onClick={Glogin}>
             Google Login
           </Button>
         </Form.Row>
