@@ -7,6 +7,7 @@ function HookCourseHome() {
   const [courses, setCourses] = useState([]);
   //const [tags, setTags] = useState([]);
   //const [query, setQuery] = useState("");
+  const [cartItems, setCartItems] = useState([]);
 
   const getCourses = async() => {
     const res = await axios.get('/api/courses');
@@ -72,10 +73,17 @@ function HookCourseHome() {
               {course.courseDesc.substring(0, 57)}
             </Card.Text>
             <Button 
-              variant="warning"
-              onClick={sayMeow}
+            style={{justifyContent:'left', marginRight:'1.5rem'}}
+            variant="outline-dark"
+            onClick={sayMeow}
             >
-              View
+              Details
+            </Button>
+            <Button
+            variant="warning"
+            onClick={() => addToCart(course)}
+            >
+              Add to Cart
             </Button>
           </Card.Body>
         </Card.ImgOverlay>
@@ -86,6 +94,16 @@ function HookCourseHome() {
   function sayMeow(props) {
     alert("MEOW");
   }
+
+  function addToCart(props){
+    setCartItems(cartItems.concat(props))
+  }
+
+  const showCartItems =  cartItems.map( (cartItem, index) => {
+    //const courses = ["alligator", "snake", "lizard"];
+    
+    return <li>{cartItem.courseName}</li>
+  })
 
   function Example() {
     const [show, setShow] = useState(false);
@@ -118,6 +136,7 @@ function HookCourseHome() {
     
     return (
       <>
+        <br/>
         <Button variant="warning" onClick={handleShow}>
           Need help finding your course?
         </Button>
@@ -197,6 +216,14 @@ function HookCourseHome() {
       >
         {showCourses}
       </div>
+      <h4>Items in Cart:</h4>
+      {showCartItems}
+      <Button variant='warning'>
+        Check Out
+      </Button>
+      <br/>
+      <br/>
+      <br/>
     </div>
   )
 }
