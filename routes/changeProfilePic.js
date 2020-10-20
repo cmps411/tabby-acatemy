@@ -1,23 +1,15 @@
-const router = require("express").Router();
-const passport = require("passport");
-require("../passport/passportConfig")(passport);
+const express = require('express')
+const router = express.Router();
 const User = require("../models/user.model");
 
-router.put('/', async (req, res, next) => {
-    try{
-        const id = req.user.id
-        const update = req.image
-        User.findByIdAndUpdate(id,
-            {
-                $set: {image: update}
-            },
-            {
-                new: true
-            })
-    } catch(error) {
+router.use(express.json());
+router.use(express.urlencoded({extended: true}))
 
-    }
-(req, res, next);
+router.put('/', (req, res, next) => {
+        const id = req.user.id
+        const query = {$set:{image: req.body.image}}
+        User.findByIdAndUpdate(id, query, {new: true, useFindAndModify: false})
+        .then(res.status(200).send())
 });
 
 module.exports = router

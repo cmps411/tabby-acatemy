@@ -1,4 +1,4 @@
-/*import React, { useState } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form, Col } from "react-bootstrap";
@@ -38,4 +38,4 @@ function HookChangeProfilePic() {
   );
 }
 
-export default HookChangeProfilePic;*/
+export default HookChangeProfilePic;
