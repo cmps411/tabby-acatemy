@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
     req.session.destroy(function(err) {
       console.log(err)
     })
+    req.session = null
   })
 
 module.exports = router
