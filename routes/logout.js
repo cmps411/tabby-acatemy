@@ -4,7 +4,7 @@ require("../passport/passportConfig")(passport);
 
 router.get('/', (req, res) => {
     req.logout()
-    req.session.save();
+    req.session.destroy();
   })
 
 module.exports = router
