@@ -8,8 +8,9 @@ function HookLogout() {
       method: "GET",
       url: "/api/logout",
     })
-      .then(window.location.href = "/")
+      .then()
       .catch((err) => console.log(err));
+      window.location.href = "/"
   };
 
   return (
