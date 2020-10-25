@@ -7,10 +7,10 @@ function HookLogout() {
     Axios({
       method: "GET",
       url: "/api/logout",
+      withCredentials: true,
     })
-      .then()
+      .then(window.location.href = "/")
       .catch((err) => console.log(err));
-      window.location.href = "/"
   };
 
   return (

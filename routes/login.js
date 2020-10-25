@@ -9,8 +9,7 @@ router.post('/', (req, res, next) => {
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        req.session.save();
-        res.send("Successfully Authenticated");
+        res.redirect("/");
       });
     }
   })(req, res, next);
