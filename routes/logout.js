@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
       res.send(err)
     });
   } catch(err) {
-    res.send("logout failed")
+    res.send(err)
+    console.log(err)
   }
   })
 
