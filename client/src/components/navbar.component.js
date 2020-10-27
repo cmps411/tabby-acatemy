@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import {Navbar} from 'react-bootstrap';
-import Paw from '../images/pawPrint.svg'
 
 function HookNavbar() {
 const [data, setData] = useState(null);
@@ -21,14 +20,14 @@ useEffect (() => {
 
     return (
       <Navbar className="navbar navbar-dark bg-dark navbar-expand-lg">
+        
         <Link to="/" className="navbar-brand" color="warning">
           <img
-            src={Paw}
-            width="1rem"
-            height="1rem"
+            src='https://webstockreview.net/images/paw-clipart-yellow-dog-9.png'
+            width="50"
+            height="50"
             alt="Icon"
           />
-          Tabby Acatemy
         </Link>
         <Navbar.Collapse id="basic-navbar-nav">
           <ul className="navbar-nav mr-auto">

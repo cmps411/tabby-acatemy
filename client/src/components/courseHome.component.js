@@ -131,7 +131,7 @@ function HookCourseHome() {
     };
     const handleShowAll = async() => {
       const res = await axios.get('/api/courses')
-      setCourses(res.data.courses.filter((e) => e.courseName.includes("")));
+      setCourses(res.data.courses);
     };
     
     return (
