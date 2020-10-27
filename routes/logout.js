@@ -1,10 +1,12 @@
 const router = require("express").Router();
-const passport = require("passport");
-require("../passport/passportConfig")(passport);
+
 
 router.get('/', (req, res) => {
-    req.logout()
-    res.redirect('/')
+  req.session.destroy(function (err) {
+    res.clearCookie('connect.sid');
+    res.redirect('/');
+  });
+
   })
 
 module.exports = router

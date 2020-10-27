@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import HookLogout from "./logout.component";
-//import HookChangeProfilePic from "./changeProfilePic.component";
+import HookChangeProfilePic from "./changeProfilePic.component";
 
 function HookProfile() {
   const [data, setData] = useState(null);
@@ -26,7 +26,7 @@ function HookProfile() {
        <h1>{data.username}</h1> 
        <br/>
        <img src={data.image} alt='Avatar'></img>
-       <div><HookLogout /></div>
+       <div><HookLogout /> <HookChangeProfilePic /></div>
        <br/>
        <h2>Achievements</h2>
        <hr></hr>

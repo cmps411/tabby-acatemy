@@ -20,7 +20,10 @@ window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?response_ty
       },
       withCredentials: true,
       url: "/api/login",
-    }).then((window.location.href = "/")).catch((err) => console.log(err));
+    })
+    .then()
+    .catch((err) => console.log(err));
+    window.location.href = "/"
   };
 
   return (
