@@ -8,7 +8,7 @@ function HookHome() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
-  const [data, setData] = useState(null);
+  const [, setData] = useState(null);
 
   const register = () => {
     Axios({
@@ -50,8 +50,8 @@ function HookHome() {
           <br/>
           <br/>
 
-          {data ? <div><h2>How are you today, {data.username}?</h2></div> : null}
-
+          {/* {data ? <div><h2>How are you today, {data.username}?</h2></div> : null} */}
+          
           <h4>Join today!</h4>
           <br/>
           <Form style={{width:'15rem'}}>
