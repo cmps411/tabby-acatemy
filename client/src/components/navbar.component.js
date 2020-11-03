@@ -43,6 +43,11 @@ useEffect (() => {
               </Link>
             </li>
             <li className="navbar-item">
+              <Link to="/code" className="nav-link">
+                Code
+              </Link>
+            </li>
+            <li className="navbar-item">
               <Link to='/profile' className="nav-link" style={{maxHeight: 50}}>
             {data ? <div><p>{data.username}</p></div> : null}
             </Link>
@@ -52,6 +57,7 @@ useEffect (() => {
             {data ? <div><img style={{maxHeight: 40}} src={data.image} alt='Avatar'></img></div> : null}
             </Link>
             </li>
+            
           </ul>
         </Navbar.Collapse>
       </Navbar>
