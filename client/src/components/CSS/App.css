@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  cursor: none;
 }
 
 .App-logo {
@@ -45,4 +46,24 @@
 
 .content-wrap{
   flex: 1;
+}
+
+.cursor{
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border: solid red;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.cat{
+  opacity: 0%;
+  width: 75%;
+  height: 75%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 900;
 }

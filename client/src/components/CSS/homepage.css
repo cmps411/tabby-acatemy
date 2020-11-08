@@ -35,3 +35,10 @@
     width:10x 0px;
     margin: auto;
 }
+
+.welcome{
+    text-align: "left";
+    position:'absolute';
+    top:'6rem';
+    left:'5rem';
+}
