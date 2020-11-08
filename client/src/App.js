@@ -6,6 +6,7 @@ import Cursor from "./components/cursor.component";
 import HookAuthentication from "./components/authentication.component";
 import HookCourseHome from "./components/courseHome.component";
 import HookProfile from "./components/userProfile.component";
+import HookCode from "./components/code.component";
 import Footer from './components/Footer';
 import "./components/CSS/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -42,6 +43,7 @@ function App() {
         <Route path="/login" component={HookAuthentication} />
         <Route path='/courses' component={HookCourseHome} />
         <Route path='/profile' component={HookProfile} />
+        <Route path='/code' component={HookCode} />
       </div>
     </Router>
     <Footer/>
