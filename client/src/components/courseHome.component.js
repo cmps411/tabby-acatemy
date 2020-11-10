@@ -8,41 +8,17 @@ function HookCourseHome() {
   //const [tags, setTags] = useState([]);
   //const [query, setQuery] = useState("");
   const [cartItems, setCartItems] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [showDetails, setShowDetails] = useState(false);
 
   const getCourses = async() => {
     const res = await axios.get('/api/courses');
     setCourses(res.data.courses);
   }
-  
-  // const filterCourses = async() => {
-  //   const res = await axios.get('/api/courses')
-  //   setFilteredCourses(res.data.courses.filter((e) => e.courseName.includes(query)));
-  // }
 
   useEffect( () =>{
     getCourses();
   }, [],);
-
-  //QUERY TESTING
-  
-
-  //Website loops through the tags to filter out the courses (ROUGH I KNOW LMAO)
-  // try{
-  //   var query = [""];
-    
-  //   var queriedCourses = courses.filter((e) => e.courseName.includes(query[0]));
-
-  //   for (var i=1; i<query.length; i++){
-  //     queriedCourses = queriedCourses.filter((e) => e.courseName.includes(query[i]));
-  //   }
-  // }catch (error) {
-  //   console.log(error);
-  // }
-
-  // const queryCourses = () => {
-  //   setQuery("CMPS");
-  //   //setQuery(query.concat=("CMPS"));
-  // }  
 
   const showCourses = courses.length > 0 &&  courses.map( (course, index) => {
     return(
@@ -64,18 +40,20 @@ function HookCourseHome() {
             alt="Under Construction"
           />
           <Card.Body>
-            <Card.Title
-            >
+            <Card.Title>
               {course.courseName}
             </Card.Title>
             
             <Card.Text>
-              {course.courseDesc.substring(0, 57)}
+              {course.courseDesc.substring(0, 50)}
             </Card.Text>
             <Button 
             style={{justifyContent:'left', marginRight:'1.5rem'}}
             variant="outline-dark"
-            onClick={sayMeow}
+            onClick={() => {
+              setSelected(course)
+              setShowDetails(true)
+            }}
             >
               Details
             </Button>
@@ -91,25 +69,16 @@ function HookCourseHome() {
     )
   });
 
-  function sayMeow(props) {
-    alert("MEOW");
-  }
-
   function addToCart(props){
     setCartItems(cartItems.concat(props))
   }
 
   const showCartItems =  cartItems.map( (cartItem, index) => {
-    //const courses = ["alligator", "snake", "lizard"];
-    
     return <li>{cartItem.courseName}</li>
   })
 
-  function Example() {
+  function SelectFilter() {
     const [show, setShow] = useState(false);
-  
-    //const handleQuery = () => 
-
     const handleClose = () => {
       setShow(false);
     };
@@ -164,52 +133,35 @@ function HookCourseHome() {
       </>
     );
   }
+
+  function CourseDetails() {
+    const handleClose = () => setShowDetails(false);
   
- 
-
-  // const allCourses = courses.length > 0 && courses.map( (course, index) => {
-  //   return(
-  //     <Card style={{ width: "18rem", margin: "1rem" }}>
-  //       <Card.Img
-  //         width="100rem"
-  //         height="400rem"
-
-  //         src={require('./mathCard.png')}
-  //         alt="Under Construction"
-  //       />
-  //       <Card.ImgOverlay>
-  //         <Card.Img
-  //           width="30%"
-  //           height="50%"
-
-  //           variant="right"
-  //           src={require('./catPaw.png')}
-  //           alt="Under Construction"
-  //         />
-  //         <Card.Body>
-  //           <Card.Title
-  //           >
-  //             {course.courseName}
-  //           </Card.Title>
-            
-  //           <Card.Text>
-  //             {course.courseDesc.substring(0, 57)}
-  //           </Card.Text>
-  //           <Button 
-  //             variant="warning"
-  //           >
-  //             View
-  //           </Button>
-  //         </Card.Body>
-  //       </Card.ImgOverlay>
-  //     </Card>
-  //   )
-  // });
+    return (
+      <>
+        <Modal show={showDetails} onHide={handleClose} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>{selected.courseName}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{selected.courseDesc}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="warning" onClick={() => {
+              handleClose()
+              addToCart(selected)
+            }}>
+              Add to Cart
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
 
   return (
     <div>
       <div style={{margin: '1rem'}}>
-        <Example />
+        <SelectFilter />
+        <CourseDetails />
       </div>
       <div 
         className="row my-4 justify-content-center"
