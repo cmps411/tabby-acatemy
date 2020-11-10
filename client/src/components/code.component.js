@@ -20,14 +20,8 @@ function HookCode() {
 
   const Q2  = () => {
     question = 2
-    answer = "Meow Meow\n";
-        document.getElementById("assignmentHeading").innerHTML = 'Print "Meow Meow"'
-  }
-
-  const Q3  = () => {
-    question = 3
-    answer = "Meow Meow\n";
-        document.getElementById("assignmentHeading").innerHTML = 'Print "Meow Meow"'
+    answer = "31\n";
+        document.getElementById("assignmentHeading").innerHTML = 'Convert binary 11111 to decimal. (console.log the answer!)'
   }
 
   function onChange(newValue) {
@@ -96,7 +90,7 @@ function HookCode() {
             Run
         </Button>
         
-        <p>Pick an Assignment: </p>
+        <p>Pick an Assignment (Or just test some stuff out!): </p>
         <Button variant="warning" onClick={Q1} style={{marginTop:'0.5rem', marginLeft:'0.5rem'}}>
             1
         </Button>
@@ -105,9 +99,6 @@ function HookCode() {
             2
         </Button>
 
-        <Button variant="warning" onClick={Q3} style={{marginTop:'0.5rem', marginLeft:'0.5rem'}}>
-            3
-        </Button>
 
         <h1 id="assignmentHeading">No assignments selected.</h1>
         <Form>
