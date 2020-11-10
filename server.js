@@ -76,6 +76,7 @@ const coursesRouter = require("./routes/course");
 const logoutRouter = require("./routes/logout");
 const changeProfilePicRouter = require("./routes/changeProfilePic");
 
+
 app.use("/api/login", loginRouter);
 app.use("/api/register", registerRouter);
 app.use("/api/user", userRouter);
